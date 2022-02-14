@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="fragments/head::head"></head>
+
+<body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky">
+<div class="wrapper">
+    <nav th:replace="fragments/userLeftNav::leftNav"></nav>
+    <div class="main">
+        <nav th:replace="fragments/topNav::topNav"></nav>
+
+        <main class="content">
+            <div class="container-fluid p-0">
+
+                <div style="margin-bottom: 50px">
+                    <ul class="nav nav-pills card-header-pills pull-right" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active disabled">Szczegóły</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div th:if="${message != null}" class="container">
+                                        <div class="row justify-content-md-center">
+                                            <div style="width: 100%"
+                                                 class="col col-lg-4 alert alert-dismissible"
+                                                 role="alert"
+                                                 th:classappend="${messageType}"
+                                            >
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close"></button>
+
+                                                <div class="alert-message">
+                                                    <span th:text="${message}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="row g-2">
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                    <p
+                                                            th:text="${opinion.hotel.name}"
+                                                            id="hotelName"
+                                                            class="form-control"
+                                                    ></p>
+                                                    <label for="hotelName">Hotel</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                    <p
+                                                            th:text="${opinion.hotel.address}"
+                                                            id="hotelAddress"
+                                                            class="form-control"
+                                                    ></p>
+                                                    <label for="hotelAddress">Adres</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-2">
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                    <p
+                                                            th:text="${opinion.isPositive ? 'Pozytywna' : 'Negatywna'}"
+                                                            id="isPositive"
+                                                            class="form-control"
+                                                    ></p>
+                                                    <label for="isPositive">Rodzaj opinii</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                    <p
+                                                            th:switch="*{opinion.cleanliness}"
+                                                            id="stars"
+                                                            class="form-control"
+                                                    >
+                                                        <span th:case="1">★</span>
+                                                        <span th:case="2">★★</span>
+                                                        <span th:case="3">★★★</span>
+                                                        <span th:case="4">★★★★</span>
+                                                        <span th:case="5">★★★★★</span>
+                                                    </p>
+                                                    <label for="stars">Czystość</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-2">
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                    <p
+                                                            th:switch="*{opinion.serviceQuality}"
+                                                            id="stars"
+                                                            class="form-control"
+                                                    >
+                                                        <span th:case="1">★</span>
+                                                        <span th:case="2">★★</span>
+                                                        <span th:case="3">★★★</span>
+                                                        <span th:case="4">★★★★</span>
+                                                        <span th:case="5">★★★★★</span>
+                                                    </p>
+                                                    <label for="stars">Jakość obsługi</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                    <p
+                                                            th:switch="*{opinion.qualityToPrice}"
+                                                            id="stars"
+                                                            class="form-control"
+                                                    >
+                                                        <span th:case="1">★</span>
+                                                        <span th:case="2">★★</span>
+                                                        <span th:case="3">★★★</span>
+                                                        <span th:case="4">★★★★</span>
+                                                        <span th:case="5">★★★★★</span>
+                                                    </p>
+                                                    <label for="stars">Stosunek jakości do ceny</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-2">
+                                            <div class="form-floating">
+                                                    <textarea
+                                                            th:text="${opinion.description}"
+                                                            id="description"
+                                                            class="form-control"
+                                                            readonly
+                                                    ></textarea>
+                                                <label for="description">Opinia</label>
+                                            </div>
+
+                                            <div class="form-floating">
+                                                    <textarea
+                                                            th:text="${opinion.changes}"
+                                                            id="changes"
+                                                            class="form-control"
+                                                            readonly
+                                                    ></textarea>
+                                                <label for="changes">Co chciałby zmienić</label>
+                                            </div>
+
+                                            <div class="form-floating">
+                                                    <textarea
+                                                            th:text="${opinion.attractions}"
+                                                            id="attractions"
+                                                            class="form-control"
+                                                            readonly
+                                                    ></textarea>
+                                                <label for="attractions">Atrakcje</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer th:replace="fragments/footer::footer"></footer>
+    </div>
+</div>
+
+<div th:replace="fragments/bottomImports::bottomImports"></div>
+
+</body>
+
+</html>

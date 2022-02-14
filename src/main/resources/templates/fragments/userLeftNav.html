@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<nav id="sidebar" class="sidebar" th:fragment="leftNav">
+    <div class="sidebar-content js-simplebar" style="padding-top: 50px">
+
+        <ul class="sidebar-nav">
+            <div th:if="${session.loggedUser != null}">
+                <li class="sidebar-item"
+                    th:classappend="${#request.getRequestURI().startsWith('/user/myAccount') ? 'active' : ''}">
+                    <a class="sidebar-link" href="/user/myAccount">
+                        <span class="align-middle">Moje konto</span>
+                    </a>
+                </li>
+                <li class="sidebar-item"
+                    th:classappend="${#request.getRequestURI().startsWith('/user/reservation') ? 'active' : ''}">
+                    <a class="sidebar-link" href="/user/reservation/add">
+                        <span class="align-middle">Zadeklaruj chęć wzięcia udziału w systemie</span>
+                    </a>
+                </li>
+            </div>
+
+            <li class="sidebar-item"
+                th:classappend="${#request.getRequestURI().startsWith('/authFree/opinion/list') || #request.getRequestURI().startsWith('/authFree/opinion/details') ? 'active' : ''}">
+                <a class="sidebar-link" href="/authFree/opinion/list">
+                    <span class="align-middle">Baza opinii</span>
+                </a>
+            </li>
+            <li class="sidebar-item"
+                th:classappend="${#request.getRequestURI().startsWith('/authFree/opinion/add') ? 'active' : ''}">
+                <a class="sidebar-link" href="/authFree/opinion/add">
+                    <span class="align-middle">Dodaj opinie</span>
+                </a>
+            </li>
+            <li class="sidebar-item"
+                th:classappend="${#request.getRequestURI().startsWith('/authFree/awards') ? 'active' : ''}">
+                <a class="sidebar-link" href="/authFree/awards/list">
+                    <span class="align-middle">Nagrody</span>
+                </a>
+            </li>
+
+            <div th:if="${session.loggedUser == null}">
+                <li class="sidebar-item"
+                    th:classappend="${#request.getRequestURI().startsWith('/login') ? 'active' : ''}">
+                    <a class="sidebar-link" href="/login">
+                        <span class="align-middle">Logowanie</span>
+                    </a>
+                </li>
+                <li class="sidebar-item"
+                    th:classappend="${#request.getRequestURI().startsWith('/register') ? 'active' : ''}">
+                    <a class="sidebar-link" href="/register">
+                        <span class="align-middle">Rejestracja</span>
+                    </a>
+                </li>
+            </div>
+        </ul>
+    </div>
+</nav>

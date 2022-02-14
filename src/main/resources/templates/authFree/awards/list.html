@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="fragments/head::head"></head>
+
+<body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky">
+<div class="wrapper">
+    <nav th:replace="fragments/userLeftNav::leftNav"></nav>
+    <div class="main">
+        <nav th:replace="fragments/topNav::topNav"></nav>
+
+        <main class="content">
+            <div class="container-fluid p-0">
+
+                <div class="text-center" style="margin-top: 25px">
+                    <h1 class="h1 mb-3">Po przekroczeniu poniższych progów punktowych, będziesz mógł wymienić uzbierane punkty na nagrody.</h1>
+                    <h1 class="h3 mb-3">Poniżej nagrody z progami punktowymi:</h1>
+                </div>
+
+                <div class="row" style="margin-top: 50px">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../../assets/img/awards/img_0.png" alt="Unsplash">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Maskotka</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wymagane 10 punktów.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../../assets/img/awards/img_1.png" alt="Unsplash">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">20% zniżki do strefy SPA</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wymagane 20 punktów.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../../assets/img/awards/img_2.png" alt="Unsplash">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Darmowe śniadanie</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wymagane 35 punktów.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../../assets/img/awards/img_3.png" alt="Unsplash">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Prezenty powitalne w pokoju</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wymagane 50 punktów.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../../assets/img/awards/img_4.png" alt="Unsplash">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Bezpłatny transport z lotniska lub dworca</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wymagane 75 punktów.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../../assets/img/awards/img_5.png" alt="Unsplash">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Darmowy dostęp do wszystkich atrakcji hotelowych</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wymagane 100 punktów.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../../assets/img/awards/img_6.png" alt="Unsplash">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Darmowy dzień pobytu w wybranym miejscu noclegowym</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wymagane 150 punktów.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../../assets/img/awards/img_7.png" alt="Unsplash">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Udział w prestiżowym, kameralnym spotkaniu ze znanymi osobami świata sportu i showbiznesu</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wymagane 250 punktów.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../../assets/img/awards/img_8.png" alt="Unsplash">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Darmowy 3 dniowy pobyt w wybranym hotelu</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wymagane 500 punktów.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer th:replace="fragments/footer::footer"></footer>
+    </div>
+</div>
+
+<div th:replace="fragments/bottomImports::bottomImports"></div>
+
+</body>
+
+</html>

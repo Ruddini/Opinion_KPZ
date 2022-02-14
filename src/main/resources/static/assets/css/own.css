@@ -1,0 +1,43 @@
+.icon {
+    color: #6C757D;
+    cursor: pointer;
+}
+
+.icon:hover {
+    color: black !important;
+}
+
+.formButton {
+    border: 0;
+    background: none;
+    height: 24px;
+    width: 24px;
+}
+
+.own-link {
+    color: #6c757d;
+    transition: 0.2s;
+}
+
+.own-link:hover {
+    color: #6c757d;
+    font-size: 0.9rem;
+    text-decoration-line: none;
+}
+
+.own-link-clear:hover {
+    text-decoration-line: none;
+}
+
+span.click {
+    cursor: pointer;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}

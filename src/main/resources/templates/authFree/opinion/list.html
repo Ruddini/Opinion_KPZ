@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="fragments/head::head"></head>
+
+<body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky">
+<div class="wrapper">
+    <nav th:replace="fragments/userLeftNav::leftNav"></nav>
+    <div class="main">
+        <nav th:replace="fragments/topNav::topNav"></nav>
+
+        <main class="content">
+            <div class="container-fluid p-0">
+                <form action="list" method="get">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-xl-auto flex-grow-1 d-flex">
+                            <div class="card flex-fill">
+                                <div class="card-body py-4">
+                                    <div class="form-floating">
+                                        <input
+                                                id="hotelName"
+                                                class="form-control"
+                                                minlength="3"
+                                                maxlength="40"
+                                                name="hotelName"
+                                                th:value="${hotelName}"
+                                        >
+                                        <label for="hotelName">Nazwa hotelu</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-auto flex-grow-1 d-flex">
+                            <div class="card flex-fill">
+                                <div class="card-body py-4">
+                                    <div class="form-floating">
+                                        <input
+                                                id="date"
+                                                class="form-control"
+                                                type="date"
+                                                name="date"
+                                                th:value="${date}"
+                                        >
+                                        <label for="date">Data</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-auto flex-grow-1 d-flex">
+                            <div class="card flex-fill">
+                                <div class="card-body py-4">
+                                    <div class="form-floating">
+                                        <input
+                                                id="address"
+                                                class="form-control"
+                                                min="3"
+                                                max="40"
+                                                name="address"
+                                                th:value="${address}"
+                                        >
+                                        <label for="address">Adres</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-auto flex-grow-1 d-flex">
+                            <div class="card flex-fill">
+                                <div class="card-body py-4">
+                                    <div class="form-floating">
+                                        <select
+                                                id="stats"
+                                                class="form-control"
+                                                name="stars"
+                                        >
+                                            <option value="-1" th:selected="${stars == -1}">Wszystko</option>
+                                            <option value="1" th:selected="${stars == 1}">★</option>
+                                            <option value="2" th:selected="${stars == 2}">★★</option>
+                                            <option value="3" th:selected="${stars == 3}">★★★</option>
+                                            <option value="4" th:selected="${stars == 4}">★★★★</option>
+                                            <option value="5" th:selected="${stars == 5}">★★★★★</option>
+                                        </select>
+                                        <label for="stats">Gwiazdki</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-auto flex-grow-1 d-flex">
+                            <div class="card flex-fill">
+                                <div class="card-body py-4">
+                                    <div class="form-floating">
+                                        <select
+                                                id="isPositive"
+                                                class="form-control"
+                                                name="opinionFilter"
+                                        >
+                                            <option th:each="i : ${opinionFilterTable}" th:text="${i.polishName}"
+                                                    th:value="${i}" th:selected="${opinionFilter.equals(i)}"></option>
+                                        </select>
+                                        <label for="isPositive">Rodzaj opinii</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-2" style="text-align: center">
+                        <button class="btn btn-primary" type="submit">Szukaj</button>
+                    </div>
+                </form>
+
+                <form action="clearFilter" method="post">
+                    <div class="mt-2" style="text-align: center">
+                        <button class="btn btn-primary" type="submit">Wyczyść</button>
+                    </div>
+                </form>
+
+                <div class="card" style="margin-top: 25px">
+                    <div class="card-header">
+                        <h1 class="h3 mb-3">Lista Opinii</h1>
+                    </div>
+
+                    <div class="card-body">
+                        <table id="datatables-reponsive" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>LP</th>
+                                <th>Hotel</th>
+                                <th>Adres</th>
+                                <th>Data</th>
+                                <th>Rodzaj opinii</th>
+                                <th>Gwiazdki</th>
+                                <th style="width: 5%">Akcje</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="i, item : ${opinionList}">
+                                <td th:text="${item.index + 1}"></td>
+                                <td th:text="${i.hotel.name}"></td>
+                                <td th:text="${i.hotel.address}"></td>
+                                <td th:text="${i.date}"></td>
+                                <td>
+                                    <span th:if="${i.isPositive}">Pozytywna</span>
+                                    <span th:unless="${i.isPositive}">Negatywna</span>
+                                </td>
+                                <td th:switch="${i.stars}">
+                                    <span th:case="1">★</span>
+                                    <span th:case="2">★★</span>
+                                    <span th:case="3">★★★</span>
+                                    <span th:case="4">★★★★</span>
+                                    <span th:case="5">★★★★★</span>
+                                </td>
+                                <td class="table-action">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                            Akcje
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <form action="details" method="get">
+                                                <input type="hidden" name="id" th:value="${i.id}">
+                                                <button class="dropdown-item" type="submit">Szczegóły</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer th:replace="fragments/footer::footer"></footer>
+    </div>
+</div>
+
+<div th:replace="fragments/bottomImports::bottomImports"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Datatables Responsive
+        $("#datatables-reponsive").DataTable({
+            responsive: true,
+            "language": {
+                "search": "Wyszukaj:",
+                "lengthMenu": "Wyświetl _MENU_ pozycji na stronie",
+                "zeroRecords": "Brak pozycji do wyświetlenia",
+                "info": "Strona _PAGE_ z _PAGES_",
+                "infoEmpty": "Brak pozycji do wyświetlenia",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "paginate": {
+                    "first": "Pierwsza",
+                    "last": "Ostatnia",
+                    "next": "Następna",
+                    "previous": "Poprzednia"
+                },
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

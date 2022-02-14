@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<nav id="sidebar" class="sidebar" th:fragment="leftNav">
+    <div class="sidebar-content js-simplebar" style="padding-top: 50px">
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-item"
+                th:classappend="${#request.getRequestURI().startsWith('/admin/hotel') ? 'active' : ''}">
+                <a class="sidebar-link" href="/admin/hotel/list">
+                    <span class="align-middle">Hotele</span>
+                </a>
+            </li>
+            <li class="sidebar-item"
+                th:classappend="${#request.getRequestURI().startsWith('/admin/user') ? 'active' : ''}">
+                <a class="sidebar-link" href="/admin/user/list">
+                    <span class="align-middle">Użytkownicy</span>
+                </a>
+            </li>
+
+            <!--            <li class="sidebar-item"-->
+            <!--                th:classappend="${#request.getRequestURI().startsWith('/admin/equipment') ? 'active' : ''}">-->
+            <!--                <a class="sidebar-link" href="/admin/equipment/list">-->
+            <!--                    <span class="align-middle">Wyposażenie</span>-->
+            <!--                </a>-->
+            <!--            </li>-->
+            <!--            <li class="sidebar-item"-->
+            <!--                th:classappend="${#request.getRequestURI().startsWith('/admin/user') ? 'active' : ''}">-->
+            <!--                <a class="sidebar-link" href="/admin/user/list">-->
+            <!--                    <span class="align-middle">Użytkownicy</span>-->
+            <!--                </a>-->
+            <!--            </li>-->
+            <!--            <li class="sidebar-item"-->
+            <!--                th:classappend="${#request.getRequestURI().startsWith('/admin/reservation') ? 'active' : ''}">-->
+            <!--                <a data-bs-target="#billingPanel" data-bs-toggle="collapse" class="sidebar-link collapsed"-->
+            <!--                   aria-expanded="false">-->
+            <!--                    <span class="align-middle">Rezerwacje</span>-->
+            <!--                </a>-->
+            <!--                <ul id="billingPanel" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar"-->
+            <!--                    th:classappend="${#request.getRequestURI().startsWith('/admin/reservation') ? 'show' : ''}">-->
+            <!--                    <li class="sidebar-item">-->
+            <!--                        <ul id="multi-2" class="sidebar-dropdown list-unstyled collapse show" style="">-->
+            <!--                            <li class="sidebar-item"-->
+            <!--                                th:classappend="${#request.getRequestURI().startsWith('/admin/reservation/tennisCourt') ? 'active' : ''}">-->
+            <!--                                <a class="sidebar-link" href="/admin/reservation/tennisCourt/list">Kort</a>-->
+            <!--                            </li>-->
+            <!--                            <li class="sidebar-item"-->
+            <!--                                th:classappend="${#request.getRequestURI().startsWith('/admin/reservation/equipment') ? 'active' : ''}">-->
+            <!--                                <a class="sidebar-link" href="/admin/reservation/equipment/list">Wypożyczalnia</a>-->
+            <!--                            </li>-->
+            <!--                        </ul>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </li>-->
+        </ul>
+    </div>
+</nav>
